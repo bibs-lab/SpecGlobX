@@ -36,7 +36,7 @@ public class MatrixE {
 
 	// Operators
 	/**
-	 * This function will be adapted in function of parser used. Function use to
+	 * Function will be adapted in function of parser used. Function use to
 	 * calculate all mass differences and auto fill the matrix with
 	 * 
 	 * @param theoreticalMassList  list of all masses from theoretical spectrum

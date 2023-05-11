@@ -31,7 +31,7 @@ Tested version :
 
 ### Use SpecGlobX through its GUI Mode
 
-Double-click on the jar file.<br><br>
+A jar file can be downloaded directly from the target repository. Double-click on the jar file.<br><br>
 A window appears, where you can select input and output files. The most important parameters can be chosen via the GUI. Other parameters are stored in the *config.properties* file that **must be in the same folder as the jar**. You can modify the parameters in this file before and while the jar is running.<br><br>
 The spectra file can be in the MGF or mzML format.<br><br>
 The CSV input file contains the list of PSMs (Peptide-to-Spectrum Matches) (obtained by any OMS or other).<br>

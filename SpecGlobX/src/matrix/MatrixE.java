@@ -45,7 +45,7 @@ public class MatrixE {
 	public void fillDMass(List<Double> theoreticalMassList, List<Double> experimentalMassList) {
 		for (int i = 0; i < theoreticalMassList.size(); i++) {
 			for (int j = 0; j < experimentalMassList.size(); j++) {
-				setData(i, j, (experimentalMassList.get(j) - theoreticalMassList.get(i)));
+				 setData(i, j, (experimentalMassList.get(j) - theoreticalMassList.get(i)));
 			}
 		}
 	}

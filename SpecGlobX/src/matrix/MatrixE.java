@@ -51,7 +51,7 @@ public class MatrixE {
 	}
 
 	/**
-	 * Show method to display the whole matrix
+	 * Display the whole matrix
 	 */
 	public void show() {
 		for (int i = 0; i < getNbRow(); i++) {

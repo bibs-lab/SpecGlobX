@@ -3,8 +3,7 @@ package matrix;
 import java.util.List;
 
 /**
- * This is the class for the delta mass matrix It will be use to stock
- * informations about mass differences between all peaks of the two spectrum
+ *  Delta mass matrix used to store mass differences between all peaks of the two spectrum
  * 
  * @author Gregoire Prunier, Albane Lysiak, Dominique Tessier
  *
@@ -13,17 +12,17 @@ public class MatrixE {
 
 	// Attributes
 	/**
-	 * the number of column of the matrix (need the maximal size of experimental
+	 * Number of columns of the matrix (need the maximal size of experimental
 	 * spectra)
 	 */
 	private int _nbColumn;
 	/**
-	 * the number of row of the matrix (need the maximal size of theoretical
+	 * Number of rows of the matrix (need the maximal size of theoretical
 	 * spectra)
 	 */
 	private int _nbRow;
 	/**
-	 * a 2D array of double that contain mass difference between each peak of
+	 * a 2D array of double that contains mass difference between each peak of
 	 * experimental and theoretical spectrum
 	 */
 	private double[][] _dataFrame;

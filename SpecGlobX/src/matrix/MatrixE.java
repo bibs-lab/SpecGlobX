@@ -63,7 +63,7 @@ public class MatrixE {
 	}
 
 	/**
-	 * Show method with set of number of row and number of column to show
+	 * Displays Matrix on a selected sub-region
 	 * 
 	 * @param nbRow : number of row to show (theoretical size)
 	 * @param nbCol : number of column to show (experimental size)

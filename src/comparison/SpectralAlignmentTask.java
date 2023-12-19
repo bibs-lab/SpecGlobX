@@ -107,6 +107,7 @@ public class SpectralAlignmentTask extends Thread {
 		for (int i = 0; i < getSize(); i++) {
             if (!SpecGlobXGUI.commandMode)
             	SpecGlobXGUI.progressBar.setValue(Math.round(400 + i * progressStep));
+            
 			String titleScan = getExpeSpectraTitles(i);
 			String psm = getTheoSpectraPsm(i);
 			if (getIDScans().containsKey(titleScan)) {

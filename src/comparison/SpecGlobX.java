@@ -307,7 +307,12 @@ public class SpecGlobX {
 
 				writerCSV.write(
 						"Title;Peptide;MassDelta;SharedPeaksBeforeAlign;SharedPeaksAfterAlign;PreAlignedPeptide;AlignedPeptide;NbShift;NotAlignedMass;ScoreAlign;IntensityExplained\n");
-
+                writerCSV.flush();
+                if (writerCSV.checkError()) {
+                	SpecGlobXGUI.LOG.append("Writing in result file generates an issue.");
+                	System.out.println("Writing in result file generates an issue.");
+                }
+                
 				String prevTitleScan = "";
 
 				// read the first line from the text file
@@ -374,6 +379,7 @@ public class SpecGlobX {
 					line = br.readLine();
 					// if end of file reached, line would be null and stop while
 				}
+				writerCSV.flush();
 			}
 		} catch (
 
@@ -459,6 +465,7 @@ public class SpecGlobX {
 
 				}
 
+				
 				// initialization and launch of the process in a Thread
 				SpectralAlignmentTask task = new SpectralAlignmentTask(inputArrayTitle, getExperimentalSpectraData(),
 						getIDScans(), inputArraySequence, new SpectralAlignment(null, null, getMaxLengthSpectrum() * 2),
@@ -476,9 +483,13 @@ public class SpecGlobX {
 			try (PrintWriter writerCSV = new PrintWriter(getOutputFile())) {
 				writerCSV.write(
 						"Title;Peptide;MassDelta;SharedPeaksBeforeAlign;SharedPeaksAfterAlign;PreAlignedPeptide;AlignedPeptide;NbShift;NotAlignedMass;ScoreAlign;IntensityExplained\n");
+				writerCSV.flush();
+				
 				for (int i = 0; i < nbThread; i++) {
 					writerCSV.write(tasks.get(i).getResult());
+					writerCSV.flush();
 				}
+
 			}
 
 		} catch (IOException ioe) {

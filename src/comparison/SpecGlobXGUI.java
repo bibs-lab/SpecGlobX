@@ -59,8 +59,6 @@ public class SpecGlobXGUI {
 
 	private File spectraFile = new File("spectra.mgf");
 	private String dataType = "MGF";
-	private File csvInputFile = new File("data.csv");
-	private File csvOutputFile = new File("output.csv");
 
 	private String spectraPath;
 
@@ -180,10 +178,12 @@ public class SpecGlobXGUI {
 					executionSGT.parallelAlignmentLaunch();
 				} else {
 					executionSGT.launchAlignments();
+				
 				}
 
 			} catch (JMzReaderException | InterruptedException | FileNotFoundException e) {
 				// TODO Auto-generated catch block
+				System.out.println("exception JMzReader or FileNotFound or Interrupted " + e);
 				e.printStackTrace();
 			}
 
@@ -298,8 +298,7 @@ public class SpecGlobXGUI {
 					File selectedFile = fc.getSelectedFile();
 					String selectedFilePath = selectedFile.getAbsolutePath();
 
-					LOG.append("Selected file: " + selectedFilePath + "\n");
-
+	
 					spectraFile = selectedFile;
 					textFieldInputMGF.setText(selectedFilePath);
 
@@ -342,10 +341,6 @@ public class SpecGlobXGUI {
 				if (result == JFileChooser.APPROVE_OPTION) {
 					File selectedFile = fc.getSelectedFile();
 					String selectedFilePath = selectedFile.getAbsolutePath();
-
-					LOG.append("Selected csv input file: " + selectedFilePath + "\n");
-
-					csvInputFile = selectedFile;
 					textFieldInputCSV.setText(selectedFilePath);
 
 				}
@@ -418,13 +413,13 @@ public class SpecGlobXGUI {
 		textFieldOutput.setBounds(10, 54, 161, 23);
 		layeredPane1.add(textFieldOutput);
 
+		
 		JButton buttonOutputCSV = new JButton("Folder");
 		buttonOutputCSV.setBounds(181, 54, 23, 23);
 		layeredPane1.add(buttonOutputCSV);
 		buttonOutputCSV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-
 				JFrame frame = new JFrame("Select CSV output file name");
 				JFileChooser fc = new JFileChooser(new File(baseFolderPath));
 				fc.setDialogTitle("Select CSV output file name");
@@ -435,16 +430,15 @@ public class SpecGlobXGUI {
 				if (result == JFileChooser.APPROVE_OPTION) {
 					File selectedFile = fc.getSelectedFile();
 					String selectedFilePath = selectedFile.getAbsolutePath();
-
-					LOG.append("Selected file to save: " + selectedFilePath + "\n");
-
-					csvOutputFile = selectedFile;
+//					LOG.append("Selected file to save: " + selectedFilePath + "\n");
+//					csvOutputFile = selectedFile;
 					textFieldOutput.setText(selectedFilePath);
 
 				}
 
 			}
-		});
+		}); 
+		
 
 		JLabel labelAlignFile = new JLabel("Alignment file (.csv)\r\n");
 		labelAlignFile.setFont(new Font(fontType, Font.PLAIN, 12));
@@ -557,7 +551,10 @@ public class SpecGlobXGUI {
 			public void actionPerformed(ActionEvent e) {
 				if (buttonLauch.isEnabled()) {
 					buttonLauch.setEnabled(false);
-
+					
+					LOG.append("Selected file: " + spectraFile.getAbsolutePath() + "\n");
+					LOG.append("Selected csv input file: " + textFieldInputCSV.getText() + "\n");
+					LOG.append("Selected file to save: " + textFieldOutput.getText() + "\n");
 					LOG.setText("");
 
 					// get informations about the spectra file
@@ -566,11 +563,9 @@ public class SpecGlobXGUI {
 					// get informations about the csv input file
 					titleScanCol = txtA.getText();
 					peptideCol = txtB.getText();
-					csvInputPath = csvInputFile.getAbsolutePath();
-
-					// get informations about the output file
-					csvOutputPath = csvOutputFile.getAbsolutePath();
-
+					csvInputPath = textFieldInputCSV.getText();
+					csvOutputPath = textFieldOutput.getText();
+					
 					// get informations about selected filter
 					filterChoosed = filterChooseBox.getSelectedItem().toString();
 

@@ -88,7 +88,7 @@ Parameters Description :
 * nbthread : Number of threads to launch for parallelization (be cautious about computer performances)(in GUI)
 * precision : precision of fragmented ions provided by the mass spectrometer. Default value of 0.02 *(Is in GUI
 * decimalFormat : Number of decimal written in results for masses. Default value = 4
-* scoreMinDisplay : Minimum alignment score above which a result is returned.
+* scoreMinDisplay : Minimum alignment score above which a result is returned. It is important to note that scores can be negative.
 * filter : filter type applied on spectrum peaks (0 for intensity rate and 1 for number of maximal intensity peaks). Default = 1
   * peakIntensityRate : Minimal % of the best intensity used to filter peaks. Default = 1
   * peakNumberKeeped : Number of maximal intense peak to keep. Default = 60
@@ -140,9 +140,9 @@ SpecGlobX uses a specific syntax to express alignments as strings in the Aligned
 The alignment is done with the filtered experimental spectrum (not all the peaks are considered).
 
 * When both peaks of an amino acid are not used in the alignment, the amino acid is written between brackets
-* When the peaks of an amino acid are used in the alignment, but this alignment requires a shift, then the amino acid is written,preceded by the value of the mass shift between brackets
-* When the peaks of an amino acid are used in the alignment and no shift are required for this alignment, then the amino acid is reported as such.
+* When the peaks of an amino acid are used in the alignment, but this alignment requires a shift, then the amino acid is written, preceded by the value of the mass shift between brackets
+* When the peaks of an amino acid are used in the alignment and no shift is required for this alignment, then the amino acid is reported as such.
 At the end of the string, the AlignedPeptide column indicates the "not-aligned mass" after the underscore character.
 
-The preAlignedPeptide column supports the same syntax as the alignedPeptide column, but this column gives information on how SpecGlobX managed the alignment (the dynamic programmation part with the traceBack) before the post-processing step.
+The preAlignedPeptide column supports the same syntax as the alignedPeptide column, but this column gives information on how SpecGlobX managed the alignment (the dynamic programming part with the traceBack) before the post-processing step.
 

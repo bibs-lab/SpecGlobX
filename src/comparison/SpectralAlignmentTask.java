@@ -29,7 +29,7 @@ public class SpectralAlignmentTask extends Thread {
 	/**
 	 * Spectra data
 	 */
-	private JMzReader _experimentalSpectraData;
+	private ExperimentalSpectrum[] _experimentalSpectraData;
 
 	/**
 	 * A map that associate the spectrum Title and the given ID to call it
@@ -81,7 +81,7 @@ public class SpectralAlignmentTask extends Thread {
 	 *                                Thread and to count finished thread to wait
 	 *                                all finished before writing results in file
 	 */
-	public SpectralAlignmentTask(String[] titleList, JMzReader experimentalSpectraData,
+	public SpectralAlignmentTask(String[] titleList, ExperimentalSpectrum[] experimentalSpectraData,
 			HashMap<String, Integer> idScansMap, String[] seqList, SpectralAlignment specAlign, CountDownLatch latch,
 			int size) {
 		setExpeSpectraTitles(titleList);
@@ -114,15 +114,18 @@ public class SpectralAlignmentTask extends Thread {
 
 				if (!titleScan.equals(prevTitleScan)) {
 					prevTitleScan = titleScan;
-					try {
+/*					try {
 
 						getSpecAlign().setExpeSpec(new ExperimentalSpectrum(
 								getExperimentalSpectraData().getSpectrumByIndex(getIDScans().get(titleScan))));
+						
 					} catch (JMzReaderException e) {
 						e.printStackTrace();
 					}
+					*/
 				}
 
+				getSpecAlign().setExpeSpec(getExperimentalSpectraData()[i]);
 				getSpecAlign().setTheoSpec(new TheoreticalSpectrum(psm));
 
 				getSpecAlign().completeAlignment();
@@ -153,11 +156,11 @@ public class SpectralAlignmentTask extends Thread {
 		_specAlign = specAlign;
 	}
 
-	public JMzReader getExperimentalSpectraData() {
+	public ExperimentalSpectrum[] getExperimentalSpectraData() {
 		return _experimentalSpectraData;
 	}
 
-	public void setExperimentalSpectraData(JMzReader experimentalSpectraData) {
+	public void setExperimentalSpectraData(ExperimentalSpectrum[] experimentalSpectraData) {
 		_experimentalSpectraData = experimentalSpectraData;
 	}
 

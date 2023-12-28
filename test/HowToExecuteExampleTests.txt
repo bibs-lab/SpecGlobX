@@ -1,0 +1,9 @@
+. Command line usage format mzML
+
+java -jar SpecGlobX-1.0.1.jar --c -msfile 3000Spectra_HomoSapiens_ND.mzML -csvfile 3000Spectra_HomoSapiens_NDC_SPECOMS_SINGLEMATCH_T5_FOR_SpecGLOBX.csv 
+-outfile= output.csv -pepcol 2 -titlecol 8
+
+. Command line usage format mgf
+
+java -jar SpecGlobX-1.0.1.jar --c -msfile 3000Spectra_HomoSapiens_ND.mgf -csvfile 3000Spectra_HomoSapiens_NDC_SPECOMS_SINGLEMATCH_T5_FOR_SpecGLOBX.csv 
+-outfile= output.csv -pepcol 2 -titlecol 1

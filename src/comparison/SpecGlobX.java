@@ -272,6 +272,7 @@ public class SpecGlobX {
 			setDataFormat("MZML");
 			System.out.println("I'm a mzML file !!!");
 			return new MzMlWrapper(selectedFile);
+			
 
 		} else
 			System.out.println("NOT VALID DATA FORMAT");
@@ -452,7 +453,8 @@ public class SpecGlobX {
 				// Initialization of input arrays for title scan and psm
 				String[] inputArrayTitle = new String[step];
 				String[] inputArraySequence = new String[step];
-
+                ExperimentalSpectrum[] listExpSpectra = new ExperimentalSpectrum[step];
+                
 				// Keep the step number of line in one list to create one thread
 				for (int i = 0; i < step; i++) {
 					// use string.split to load a string array with the values from
@@ -462,12 +464,24 @@ public class SpecGlobX {
 					inputArrayTitle[i] = (attributes[getInfoFileCSV().getScanIdColumn()]);
 					inputArraySequence[i] = (attributes[getInfoFileCSV().getProteinSeqColumn()]);
 					line = br.readLine();
+					
+					try {
+
+						listExpSpectra[i] = new ExperimentalSpectrum(
+								getExperimentalSpectraData().getSpectrumByIndex(getIDScans().get(inputArrayTitle[i])));
+					} catch (JMzReaderException e) {
+						if (SpecGlobXGUI.commandMode)
+							System.out.println("Issue when reading spectra file!");
+						else
+							SpecGlobXGUI.LOG.append("Issue when reading spectra file\n");
+						e.printStackTrace();
+					}
 
 				}
 
 				
 				// initialization and launch of the process in a Thread
-				SpectralAlignmentTask task = new SpectralAlignmentTask(inputArrayTitle, getExperimentalSpectraData(),
+				SpectralAlignmentTask task = new SpectralAlignmentTask(inputArrayTitle, listExpSpectra,
 						getIDScans(), inputArraySequence, new SpectralAlignment(null, null, getMaxLengthSpectrum() * 2),
 						latch, step);
 				Thread t = new Thread(task);

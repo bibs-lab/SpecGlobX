@@ -71,8 +71,8 @@ Parameters :
 * -msfile [] : Spectra file (absolute path preferred)
 * -csvfile [] : CSV file that contain at least PSMs (spectrum, peptide)
 * -outfile [] : the output file
-* -titlecol [] : identification (a-Z) of column that contains titles of scans (or id if MzML) *(optional)*
-* -pepcol [] : identification (a-Z) of column that contain the peptide sequences *(optional)*
+* -titlecol [] : column number corresponding to titles or scan if MzML *(optional)*
+* -pepcol [] : column number containing peptide sequences *(optional)*
 ```
 
 ## Configuration

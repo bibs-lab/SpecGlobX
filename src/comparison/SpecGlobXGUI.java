@@ -59,7 +59,6 @@ public class SpecGlobXGUI {
 
 	private File spectraFile = new File("spectra.mgf");
 	private String dataType = "MGF";
-
 	private String spectraPath;
 
 	private String titleScanCol;

@@ -140,9 +140,10 @@ public class AminoAcids {
 		massTable.put("U", 168.964198469607 + SGXProperties.AA_MODIFS.get("U")); // Selenocysteine
 		massTable.put("O", 255.158291550141 + SGXProperties.AA_MODIFS.get("O")); // Pyrrolysine
 
-		massTable.put("NT", 1.007825032241); // H
-		massTable.put("H+", 1.007276466879); // H+
-		massTable.put("CT", 15.99491461956 + 1.007825032241); // OH
+		massTable.put("NT", 1.007825032241 + SGXProperties.AA_MODIFS.get("NT")); // NTER modification
+		massTable.put("H+", 1.007276466879 ); // H+
+		massTable.put("Hy", 1.00782503224);
+		massTable.put("CT", 15.99491461956 + 1.007825032241 + SGXProperties.AA_MODIFS.get("CT")); // OH
 		massTable.put("", 0.0);
 
 	}

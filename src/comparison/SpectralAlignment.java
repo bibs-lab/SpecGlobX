@@ -876,8 +876,8 @@ public class SpectralAlignment {
 		else
 			length = existNotExplained;
 
-		double bSum = AminoAcids.getUnitMass("H+");
-		double ySum = AminoAcids.getUnitMass("CT") + AminoAcids.getUnitMass("NT") + AminoAcids.getUnitMass("H+");
+		double bSum = AminoAcids.getUnitMass("NT");
+		double ySum = AminoAcids.getUnitMass("CT") + AminoAcids.getUnitMass("H+") + AminoAcids.getUnitMass("Hy");
 		ArrayList<Double> peaks = new ArrayList<>();
 
 		int debIndex = 0;
@@ -913,13 +913,15 @@ public class SpectralAlignment {
 
 					bSum += valueOffset;
 
-					if (!peaks.isEmpty()) {
+					/* if (!peaks.isEmpty()) {
 						peaks.add(bSum);
 					} else {
 						peaks.add(valueOffset);
-					}
-
+					} */
+					
+					peaks.add(bSum);
 				}
+					
 			} else {
 
 				int lastIndex = 0;

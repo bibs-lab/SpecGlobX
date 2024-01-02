@@ -10,9 +10,8 @@ import uk.ac.ebi.pride.tools.jmzreader.JMzReaderException;
 import utility.SGXProperties;
 
 /**
- * This class is to create a process that will use an instance of Spectral
- * Alignment to align a list of spectrum in a Thread to allow a multiprocessing
- * by multithreading
+ * Creates a thread to manage the alignment of a list of PSMs
+ * Uses an instance of SpectraAlignment to align the spectra list provided as a parameter
  * 
  * @author Gregoire Prunier, Albane Lysiak, Dominique Tessier
  *
@@ -67,19 +66,20 @@ public class SpectralAlignmentTask extends Thread {
 	 * The constructor of the Object to initialize all needed to do alignments in a
 	 * thread
 	 * 
-	 * @param titleList               : List of titles of scans to analyze in this
+	 * @param titleList               : List of spectra titles that must be aligned by this
 	 *                                thread
-	 * @param experimentalSpectraData : The Spectra datas from the File in JMZreader
-	 *                                format
+	 * @param experimentalSpectraData : Experimental spectrum list that must be aligned by this
+	 *                                thread
 	 * @param idScansMap              : the association of Title and Ids for spectra
 	 *                                pick in the JMZ Object
 	 * @param psmList                 : List of PSM associated to the Titles to
 	 *                                align with experimental spectra
-	 * @param specAlign               : The instance of Spectral Alignment to use
-	 *                                for doing alignments
-	 * @param latch                   : The Object that permit to check status of
-	 *                                Thread and to count finished thread to wait
-	 *                                all finished before writing results in file
+	 * @param specAlign               : One instance of the SpectralAlignment class to use
+	 *                                for managing alignments in this thread
+	 * @param latch                   : Object that permits to indicate when
+	 *                                the current Thread has finished
+	 * @param size					  : number of spectra that must be aligned by this
+	 *                                thread
 	 */
 	public SpectralAlignmentTask(String[] titleList, ExperimentalSpectrum[] experimentalSpectraData,
 			HashMap<String, Integer> idScansMap, String[] seqList, SpectralAlignment specAlign, CountDownLatch latch,
@@ -114,15 +114,6 @@ public class SpectralAlignmentTask extends Thread {
 
 				if (!titleScan.equals(prevTitleScan)) {
 					prevTitleScan = titleScan;
-/*					try {
-
-						getSpecAlign().setExpeSpec(new ExperimentalSpectrum(
-								getExperimentalSpectraData().getSpectrumByIndex(getIDScans().get(titleScan))));
-						
-					} catch (JMzReaderException e) {
-						e.printStackTrace();
-					}
-					*/
 				}
 
 				getSpecAlign().setExpeSpec(getExperimentalSpectraData()[i]);

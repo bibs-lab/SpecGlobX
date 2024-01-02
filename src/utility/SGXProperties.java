@@ -101,6 +101,8 @@ public class SGXProperties {
 		AA_MODIFS.put("W", 0.0);
 		AA_MODIFS.put("U", 0.0);
 		AA_MODIFS.put("O", 0.0);
+		AA_MODIFS.put("NT", 0.0);
+		AA_MODIFS.put("CT", 0.0);
 	}
 	
 	/**
@@ -206,7 +208,7 @@ public class SGXProperties {
 
 		} catch (IOException io) {
 			io.printStackTrace();
-			SpecGlobXGUI.LOG.append("config.properties file not found in the JAR folder");
+			SpecGlobXGUI.LOG.append("config.properties file not found or incorrect in the JAR folder \n");
 		}
 	}
 
@@ -218,117 +220,175 @@ public class SGXProperties {
 	 */
 	public static void setModif(Properties prop) {
 		double massModif = 0.00;
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.G"));
-		AA_MODIFS.put("G", massModif);
+
+		if (prop.getProperty("sg.modif.G")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.G"));
+			AA_MODIFS.put("G", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("G", prop.getProperty("sg.modif.G"));
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.A"));
-		AA_MODIFS.put("A", massModif);
+
+		if (prop.getProperty("sg.modif.A")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.A"));
+			AA_MODIFS.put("A", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("A", prop.getProperty("sg.modif.A"));
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.S"));
-		AA_MODIFS.put("S", massModif);
+
+		if (prop.getProperty("sg.modif.S")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.S"));
+			AA_MODIFS.put("S", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("S", prop.getProperty("sg.modif.S"));
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.P"));
-		AA_MODIFS.put("P", massModif);
+
+		if (prop.getProperty("sg.modif.P")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.P"));
+			AA_MODIFS.put("P", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("P", prop.getProperty("sg.modif.P"));
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.V"));
-		AA_MODIFS.put("V", massModif);
+
+		if (prop.getProperty("sg.modif.V")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.V"));
+			AA_MODIFS.put("V", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("V", prop.getProperty("sg.modif.V"));
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.T"));
-		AA_MODIFS.put("T", massModif);
+
+		if (prop.getProperty("sg.modif.T")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.T"));
+			AA_MODIFS.put("T", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("T", prop.getProperty("sg.modif.T"));
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.C"));
-		AA_MODIFS.put("C", massModif);
+
+		if (prop.getProperty("sg.modif.C")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.C"));
+			AA_MODIFS.put("C", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("C", prop.getProperty("sg.modif.C"));
 		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.I"));
-		AA_MODIFS.put("I", massModif);
+		if (prop.getProperty("sg.modif.I")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.I"));
+			AA_MODIFS.put("I", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("I", prop.getProperty("sg.modif.I"));
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.L"));
-		AA_MODIFS.put("L", massModif);
+
+		if (prop.getProperty("sg.modif.L")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.L"));
+			AA_MODIFS.put("L", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("L", prop.getProperty("sg.modif.L"));
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.N"));
-		AA_MODIFS.put("N", massModif);
+
+		if (prop.getProperty("sg.modif.N")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.N"));
+			AA_MODIFS.put("N", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("N", prop.getProperty("sg.modif.N"));
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.D"));
-		AA_MODIFS.put("D", massModif);
+
+		if (prop.getProperty("sg.modif.D")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.D"));
+			AA_MODIFS.put("D", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("D", prop.getProperty("sg.modif.D"));
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.Q"));
-		AA_MODIFS.put("Q", massModif);
+
+		if (prop.getProperty("sg.modif.Q")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.Q"));
+			AA_MODIFS.put("Q", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("Q", prop.getProperty("sg.modif.Q"));		
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.K"));
-		AA_MODIFS.put("K", massModif);
+
+		if (prop.getProperty("sg.modif.K")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.K"));
+			AA_MODIFS.put("K", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("K", prop.getProperty("sg.modif.K"));		
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.E"));
-		AA_MODIFS.put("E", massModif);
+
+		if (prop.getProperty("sg.modif.E")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.E"));
+			AA_MODIFS.put("E", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("E", prop.getProperty("sg.modif.E"));		
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.M"));
-		AA_MODIFS.put("M", massModif);
+
+		if (prop.getProperty("sg.modif.M")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.M"));
+			AA_MODIFS.put("M", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("M", prop.getProperty("sg.modif.M"));	
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.H"));
-		AA_MODIFS.put("H", massModif);
+
+		if (prop.getProperty("sg.modif.H")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.H"));
+			AA_MODIFS.put("H", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("H", prop.getProperty("sg.modif.H"));	
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.F"));
-		AA_MODIFS.put("F", massModif);
+
+		if (prop.getProperty("sg.modif.F")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.F"));
+			AA_MODIFS.put("F", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("F", prop.getProperty("sg.modif.F"));	
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.R"));
-		AA_MODIFS.put("R", massModif);
+
+		if (prop.getProperty("sg.modif.R")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.R"));
+			AA_MODIFS.put("R", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("R", prop.getProperty("sg.modif.R"));	
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.Y"));
-		AA_MODIFS.put("Y", massModif);
+
+		if (prop.getProperty("sg.modif.Y")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.Y"));
+			AA_MODIFS.put("Y", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("Y", prop.getProperty("sg.modif.Y"));	
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.W"));
-		AA_MODIFS.put("W", massModif);
+
+		if (prop.getProperty("sg.modif.W")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.W"));
+			AA_MODIFS.put("W", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("W", prop.getProperty("sg.modif.W"));	
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.U"));
-		AA_MODIFS.put("U", massModif);
+
+		if (prop.getProperty("sg.modif.U")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.U"));
+			AA_MODIFS.put("U", massModif);
+		}
 		if (massModif != 0)
 			fixedModifications.put("U", prop.getProperty("sg.modif.U"));	
-		
-		massModif = Double.valueOf(prop.getProperty("sg.modif.O"));
-		AA_MODIFS.put("O", massModif);
+
+		if (prop.getProperty("sg.modif.O")!=null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.O"));
+			AA_MODIFS.put("O", massModif);
+		}
 		if (massModif != 0)
-			fixedModifications.put("O", prop.getProperty("sg.modif.O"));	
-		
+			fixedModifications.put("O", prop.getProperty("sg.modif.O"));
+
+		if (prop.getProperty("sg.modif.NT") != null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.NT"));
+			AA_MODIFS.put("NT", massModif);
+		}
+		if (massModif != 0)
+			fixedModifications.put("NT", prop.getProperty("sg.modif.NT"));
+
+		if (prop.getProperty("sg.modif.CT") != null) {
+			massModif = Double.valueOf(prop.getProperty("sg.modif.CT"));
+			AA_MODIFS.put("CT", massModif);
+		}
+		if (massModif != 0)
+			fixedModifications.put("CT", prop.getProperty("sg.modif.CT"));
+
 		AminoAcids.updateAAMapMass();
 	}
 	

@@ -55,14 +55,12 @@ public class TheoreticalSpectrum extends SGSpectrum {
 
 		for (int i = 0; i <= sequence.length(); i++) {
 			// b peaks
-			tempMap.put((AminoAcids.getSequenceMass(sequence.substring(0, i)) + AminoAcids.getUnitMass("H+")), 10000.0);
-			// y peaks
-//			tempMap.put((AminoAcids.getPeptideMass(sequence.substring(i)) + AminoAcids.getAAMass("H+")
-//					+ AminoAcids.getAAMass("NT") + AminoAcids.getAAMass("CT")), 10000.0);
+			tempMap.put((AminoAcids.getSequenceMass(sequence.substring(0, i)) + AminoAcids.getUnitMass("NT")), 10000.0);
 		}
 		return tempMap;
 	}
 
+	
 	public Double pepMassCalculator(String sequence) {
 		// add values of mass for CT, NT and the 2 H+
 		Double pepMass = AminoAcids.getUnitMass("NT") + AminoAcids.getUnitMass("CT");
